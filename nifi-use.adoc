@@ -1,0 +1,16 @@
+= Nifi处理器使用
+lafeier
+:doctype: article
+:encoding: utf-8
+:lang: en
+:toc: left
+
+
+= ftp文件下载  
+ListSFTP配合FetchSFTP使用
+
+== ListSftp
+获取服务器上的文件列表,针对每个文件,创建一个flowfile,并设置该flowfile的filename属性为服务器上的文件名.
+
+== UpdateAttribute 1.7.1
+使用表达式语言或者正则表达式更改flowfile的属性.
