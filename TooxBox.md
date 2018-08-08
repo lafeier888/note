@@ -446,5 +446,8 @@ DataminingFactory的注册
 			DataminingFactory->factorys 将工厂存放起来
         	
         	
-        	DataminingEngine.load(InputStream, ClassLoader)  (com.nsn.datamining)
+        	qqDataminingEngine.load(InputStream, ClassLoader)  (com.nsn.datamining)
+        	
+        	
+        	qq1
 ```
