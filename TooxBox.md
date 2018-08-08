@@ -374,3 +374,77 @@ pom.xml
 
 # 源码
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+com.nsn.web.do.tbox   web界面请求的入口
+
+ExecuteServlet:POST 任务提交的入口
+
+
+
+```
+com.nsn.datamining.spark
+
+spark1==>SparkDataminingEngine
+
+
+DataminingEngine的注册
+	注册DataminingEngine注册到com.nsn.datamining.DataminingEngine.Factory->engines中
+	mysql ,MysqlDataminingEngine
+	spark1,SparkDataminingEngine
+	oracle,OracleDataminingEngine
+	green,GreenDataminingEngine
+	shell,ShellDataminingEngine
+	memory,MemoryDataminingEngine
+
+ExecuteServlet#doPost
+	//这里获取到XmlDataminingFactory
+	DataminingFactory df = DataminingFactory.getDataminingFactory(id);
+	//实际调用的是XmlDataminingFactory
+	DataminingFactory.requiredSources()  (com.nsn.datamining)
+		XmlDataminingFactory.requiredSources()  (com.nsn.datamining)
+			XmlDataminingFactory.init()  (com.nsn.datamining)
+				DataminingEngine.load(InputStream, ClassLoader)  (com.nsn.datamining)
+					XmlDatamining.load(InputStream)  (com.nsn.datamining.xml)
+					DataminingEngine.load(XmlDatamining, ClassLoader)  (com.nsn.datamining)
+	//
+	DataminingEngine.xml()(2 usages)  (com.nsn.datamining)
+	    MysqlDataminingEngine.xml()  (com.nsn.datamining.mysql.engine)
+        MemoryDataminingEngine.xml()  (com.nsn.datamining.engines)
+        OracleDataminingEngine.xml()  (com.nsn.datamining.engines)
+        SparkDataminingEngine.xml()  (com.nsn.datamining.spark.engine)
+        ShellDataminingEngine.xml()  (com.nsn.datamining.engines)
+        GreenDataminingEngine.xml()  (com.nsn.datamining.engines)
+	
+	
+DataminingFactory的注册
+	DataminingFactory#register  根据专题id注册,创建DataminingFactory(都是XmlDataminingFactory)
+			DataminingFactory->factorys 将工厂存放起来
+        	
+        	
+        	DataminingEngine.load(InputStream, ClassLoader)  (com.nsn.datamining)
+```

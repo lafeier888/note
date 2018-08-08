@@ -24,9 +24,10 @@ git push origin master #提交本地master分支到远程仓库origin
 合并某分支到当前分支：git merge <name>
 
 删除分支：git branch -d <name>
+
+
+git pull --rebase origin master
 ```
-
-
 
 ```
 

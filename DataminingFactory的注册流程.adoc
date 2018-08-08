@@ -1,0 +1,7 @@
+DataminingFactory的注册流程
+[plantuml,DataminingFactory的注册流程.png,png]
+--
+专题Activator->DataminingFactory:register
+DataminingFactory->XmlDataminingFactory:new
+DataminingFactory->DataminingFactory:factorys#put 注册
+--

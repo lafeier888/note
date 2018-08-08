@@ -1,0 +1,17 @@
+[plantuml,ExecuteServlet执行流程,png]
+--
+HttpServlet->HttpServlet:id:String
+HttpServlet->DataminingFactory:getDataminingFactory(id)
+DataminingFactory->DataminingFactory: factorys.get(id)
+DataminingFactory-->HttpServlet:df:DataminingFactory
+HttpServlet->XmlDataminingFactory:df.requiredSources()
+XmlDataminingFactory->XmlDataminingFactory:init()
+XmlDataminingFactory->DataminingEngine:load(in,classloader)
+DataminingEngine->XmlDatamining:load(in);
+XmlDatamining-->DataminingEngine:xml
+DataminingEngine->DataminingEngine:load(xml,loader)
+DataminingEngine->XmlDatamining:getType
+DataminingEngine->Factory:create(xmlType, xml)
+Factory->Factory:engines.get(name)
+
+--
