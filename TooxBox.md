@@ -440,15 +440,24 @@ ExecuteServlet#doPost
         ShellDataminingEngine.xml()  (com.nsn.datamining.engines)
         GreenDataminingEngine.xml()  (com.nsn.datamining.engines)
 	
-	
-DataminingFactory的注册
-	DataminingFactory#register  根据专题id注册,创建DataminingFactory(都是XmlDataminingFactory)
-			DataminingFactory->factorys 将工厂存放起来
-        	
-        	
-        	qqDataminingEngine.load(InputStream, ClassLoader)  (com.nsn.datamining)
-        	
-        	
-        	qq1
+每个专题启动后会调用DataminingFactory#register注册专题下每个模块对应的XmlDataminingFactory(id,xmlRes)等重要信息,每个模块注册后存放在DataminingFactory.factorys里
+
+
+post方法执行后根据模块id在DataminingFactory.factorys查找对应的DataminingFactory(目前只有一个实现类,Xml的),然后调用它的XmlDataminingFactory#requiredSources方法.
+XmlDataminingFactory#requiredSources首先执行XmlDataminingFactory.init()
+XmlDataminingFactory.init()读取XmlDataminingFactory中的xml资源,转换为流对象
+流对象传递给DataminingEngine.load(InputStream, ClassLoader)
+DataminingEngine将流对象在传递给XmlXmlDatamining.load负责将流对象转换为XmlDatamining对象
+拿到XmlDatamining对象之后,根据属性创建对应的DataminingEngine
+
+
+requiredSources方法就是:初始化每个xml文件对应的DataminingEngine,并返回xml中定义的source
+
 ```
+
+sbt 创建代码模板
+
+understand 静态代码分析
+
+vagrant
 
