@@ -20,8 +20,9 @@ MSCK REPAIR TABLE table_name;
 
 # ToolBox环境搭建（Win）
 
-## 需要导入的项目
+## 导入项目(maven)
 
+```
 assembly/
 com.nsn.alarm/
 com.nsn.cluster/
@@ -31,13 +32,13 @@ com.nsn.datamining.mysql/
 com.nsn.datamining.postgres/
 com.nsn.datamining.spark/
 com.nsn.datamining.support.xdr.cmcc/
-<u>*com.nsn.datamining.support.xdr.cmcc.cmdi/*</u>
-<u>*com.nsn.datamining.support.xdr.cmcc.test/*</u>
+com.nsn.datamining.support.xdr.cmcc.cmdi/
+com.nsn.datamining.support.xdr.cmcc.test/
 com.nsn.do.base/
 com.nsn.do.sqlloader.v2.oracle/
-<u>com.nsn.do.tbox.cmcc.spark.test/</u>
-*<u>com.nsn.do.tbox.cmcc.spark.volte/</u>*
-*<u>com.nsn.do.tbox.cmcc.spark.volte.week/</u>*
+com.nsn.do.tbox.cmcc.spark.test/
+com.nsn.do.tbox.cmcc.spark.volte/
+com.nsn.do.tbox.cmcc.spark.volte.week/
 com.nsn.do.tbox.mining/
 com.nsn.executer/
 com.nsn.framework/
@@ -56,10 +57,11 @@ com.nsn.web.configurator/
 com.nsn.web.do/
 com.nsn.web.do.nologin/
 com.nsn.web.do.tbox/
-<u>*com.nsn.web.do.tbox.cmcc.spark.test/*</u>
-<u>*com.nsn.web.do.tbox.cmcc.spark.volte/*</u>
+com.nsn.web.do.tbox.cmcc.spark.test/
+com.nsn.web.do.tbox.cmcc.spark.volte/
 com.nsn.web.do.tbox.mining/
 Framework/  --工具箱
+```
 
 斜体的项目是自己写的插件
 
@@ -119,13 +121,13 @@ assembly\install\Toobox\pom.xml
 
 访问http://localhost:8080
 
-
+注意:
 
 win下可能需要删除flex-cache目录
 
 work目录也有可能需要删除
 
-# Framework项目介绍
+# Framework模块
 
 这个就是工具箱启动项目,就是一个框架,工具箱的功能以组件的形式整合到框架中的plugins目录下
 
@@ -360,6 +362,8 @@ pom.xml
 
 # UI界面提交任务
 
+执行参数
+
 --master yarn --deploy-mode client --driver-memory 12G --driver-cores 5 --executor-memory 8G --executor-cores 5 --num-executors 20 --conf spark.sql.shuffle.partitions=20 
 
 # 消息机制
@@ -372,7 +376,7 @@ pom.xml
 
 # post标签
 
-# 源码
+# 源码分析
 
 
 
@@ -461,3 +465,94 @@ understand 静态代码分析
 
 vagrant
 
+
+
+
+
+# 业务
+
+
+
+数据库是cmdi
+
+CMCCXDR（INTERFACE=14)==>mw表
+
+CMCCXDR（INTERFACE=19)==> sv表
+
+
+
+# ftp采集
+
+List-BIGXDR 	
+
+​	/data/ftpdata/output/data
+
+List-Volte	
+
+​	/data1/hwvolte
+
+List-s1mme
+
+​	/data1/eric_lte/sig
+
+
+
+
+
+# bigxdr
+
+​	'drop',
+
+​	'srvcc',
+
+​	'cmcc',
+
+​	'dropmr',
+
+​	'srvccmr',
+
+​	'cmccmr',
+
+​	'vtv',
+
+​	'drops1mme',
+
+​	'Gm',
+
+# volte
+
+## mw_sv
+
+​	'Mw',
+
+​	'Sv',
+
+## volte
+
+​	'ISC',
+
+​	'Mg',
+
+​	'Cx',
+
+​	'Sh', 
+
+​	'Gx',
+
+​	'Rx',
+
+​	'Zh',
+
+​	'Mj'
+
+#  s1mme
+
+​	's1mme'
+
+
+
+
+
+数据存放路径 
+
+hdfs    /data/volte/
