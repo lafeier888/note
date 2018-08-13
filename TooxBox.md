@@ -481,7 +481,7 @@ CMCCXDR（INTERFACE=19)==> sv表
 
 
 
-# ftp采集
+# FTP采集流程(nifi)
 
 List-BIGXDR 	
 
@@ -501,15 +501,17 @@ List-s1mme
 
 # bigxdr
 
-​	'drop',
+
 
 ​	'srvcc',
 
-​	'cmcc',
+​	'srvccmr',
+
+​	'drop',
 
 ​	'dropmr',
 
-​	'srvccmr',
+​	'cmcc',
 
 ​	'cmccmr',
 
@@ -517,7 +519,7 @@ List-s1mme
 
 ​	'drops1mme',
 
-​	'Gm',
+​	'Gm',  hdfs上没有
 
 # volte
 
@@ -551,8 +553,37 @@ List-s1mme
 
 
 
+端口3388
+
 
 
 数据存放路径 
 
 hdfs    /data/volte/
+
+
+
+
+
+
+
+立即执行
+
+​	针对选择的时间区间,按照小时分割,直接一个小时一个小时的跑
+
+
+
+
+
+shell脚本分区
+
+
+
+
+
+mw  推2小时
+
+sv 推2小时
+
+
+

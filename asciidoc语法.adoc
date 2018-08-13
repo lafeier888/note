@@ -1,0 +1,105 @@
+## 段落
+
+段落不需要任何标记,要开始新段落,空行分隔
+
+## 换行
+
+    [%hardbreaks]
+    Ruby is red.
+    Java is black.
+    
+## 文字
+    
+    pp
+    
+     aa//前面至少一个空格
+     bb
+    
+     cc
+     dd
+ 
+ 
+
+
+## 警告
+
+    NOTE: note
+    TIP: Pro tip..
+    IMPORTANT: Don't forget...
+    WARNING: Watch out for...
+    CAUTION: Ensure that...
+
+## 文本格式
+
+    *加粗* fff *ccu* bb
+    _斜体_
+    *_又粗又斜_*
+    `背景`
+    #黄色背景#
+    [.small]#小字体#
+    [.underline]#下划线#
+    [.line-through]#中划线#
+    [.big]#大#字体
+    ^上标^字体
+    ~下标~字体
+
+## 标题
+    # 文档标题
+    ## 章节一级
+    ### 章节二级
+    #### 章节三级
+    ##### 章节四级
+
+## 属性
+    
+    :toc:
+    :imagesdir: assets/images
+    :homepage: https://asciidoctor.org
+    
+## 水平线
+
+ '''
+ 
+## 列表
+* 哈哈
+* 哈哈
+* 哈哈
+
+'''
+
+- 哈哈
+- 哈哈
+- 哈哈
+
+'''
+
+. 哈哈
+.. 哈哈哈
+.. 哈哈哈
+. 哈哈
+
+## 复选框
+
+* [*] chek
+* [x] chek
+* [ ] chek
+
+## 标签
+
+标签:: 内容
+标签:: 
+内容
+
+== Q&A
+
+[qanda]
+问题?::
+  An implementation of the AsciiDoc processor in Ruby.
+问题?:: 42
+
+## 超链接
+http://www.baidu.com
+
+http://www.baidu.com[百度]
+
+link:aa.txt[aa]
