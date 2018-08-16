@@ -587,3 +587,37 @@ sv 推2小时
 
 
 
+
+
+
+
+
+
+# 清理work目录脚本
+
+```
+total=`ls -l /opt/do/Toolbox/work|grep '^d'|wc -l`
+echo 清理work目录,一共$total个
+rmnum=$[total - 50]
+echo 待删除$rmnum个
+if test $[rmnum] -gt $[0]
+then
+    echo '等待删除！'
+    ls -alrth  /opt/do/Toolbox/work|awk '{if($NF ~ "mw|sv|cmcc|render|vtv|widetable"){print $9}}'|head -$rmnum|xargs rm -rf
+    echo '删除完成'
+else
+    echo '没有要删除的！'
+fi
+```
+
+# 常用命令
+
+hdfs dfs -df -h #查看硬盘占用情况
+
+hdfs dfs -du -sh #查看文件和目录大小
+
+du -sh
+
+ll -tr --time-style '+%Y/%m/%d %H:%M:%S'    按照时间升序排序
+
+awk

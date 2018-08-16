@@ -1,3 +1,10 @@
+# 配置git
+
+$ git config --global user.name "Your Name"
+$ git config --global user.email "email@example.com"
+
+# 生成密钥
+
 ```
 ssh-keygen -t rsa -C "812747475@qq.com"
 cd ~
@@ -5,12 +12,12 @@ ls -al
 cd .ssh
 复制公钥id_rsa.pub到github上
 ```
-
+# 添加远程仓库,提交到远程仓库
 ```shell
 git remote add origin git@github.com:lafeier888/note.git #创建远程仓库
 git push origin master #提交本地master分支到远程仓库origin
 ```
-
+# 分支管理
 ```
 查看分支：git branch
 
@@ -88,12 +95,3 @@ git reflog
  git reset --hard HEAD^ 回退到上个版本
  git reset --hard 1094a 回退到某个版本
 
-
-
-
-
-
-
-安装之后的配置
-$ git config --global user.name "Your Name"
-$ git config --global user.email "email@example.com"
