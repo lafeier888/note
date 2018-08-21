@@ -235,19 +235,20 @@ systemctl enable mysqld.service #开启启动
 ```
 use mysql;
 update user set host = '%' where user = 'root';
-grant all privileges  on *.* to root@'%' identified by "@Aa123456";
+grant all privileges  on *.* to root@'%' identified by "123456";
 #密码复杂度修改
 set global validate_password_policy=0;
 set global validate_password_length=4;
+FLUSH PRIVILEGES;
 ```
 
 
 
 # 安装mysql驱动包
 
-​	yum install mysql-connector-java
+	yum install mysql-connector-java
 
-​	ls /usr/share/java #查看jar包是否下载下来了
+	ls /usr/share/java #查看jar包是否下载下来了
 
 # hdp本地yum源
 

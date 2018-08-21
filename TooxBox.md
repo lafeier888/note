@@ -603,7 +603,7 @@ echo 待删除$rmnum个
 if test $[rmnum] -gt $[0]
 then
     echo '等待删除！'
-    ls -alrth  /opt/do/Toolbox/work|awk '{if($NF ~ "mw|sv|cmcc|render|vtv|widetable"){print $9}}'|head -$rmnum|xargs rm -rf
+    ls -alrth  /opt/do/Toolbox/work|awk '{if($NF ~ "mw|sv|cmcc|render|vtv|widetable"){print "/opt/do/Toolbox/work/"$9}}'|head -$rmnum|xargs rm -rf
     echo '删除完成'
 else
     echo '没有要删除的！'
@@ -621,3 +621,9 @@ du -sh
 ll -tr --time-style '+%Y/%m/%d %H:%M:%S'    按照时间升序排序
 
 awk
+
+ls -alrth  /opt/do/Toolbox/work|awk '{if($NF ~ "mw|sv|cmcc|render|vtv|widetable"){print "/opt/do/Toolbox/work/"$9}}'|wc -l
+
+
+
+"/opt/do/Toolbox/work/"
