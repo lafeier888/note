@@ -133,11 +133,11 @@ work目录也有可能需要删除
 
 etc下是配置文件
 
-​	this.properties
+	this.properties
 
-​	web.properties
+	web.properties
 
-​	这俩文件的端口保持一致
+	这俩文件的端口保持一致
 
 this.properties中的配置category=Toolbox-YUNNAN，可以通过知道工具箱读取的是哪个配置文件
 
@@ -279,21 +279,21 @@ private static final String[][] modules = {
 
 **source**:从数据源拿数据,然后注册为一个临时视图
 
-​	ID:给summary用的
+	ID:给summary用的
 
 **summary**:具体业务逻辑,依赖的数据来自source或者其他的summary处理后的数据
 
-​	id:标识,给result或者其他的summary用
+	id:标识,给result或者其他的summary用
 
-​	in:依赖的视图,可以是source或者是其他summary的id
+	in:依赖的视图,可以是source或者是其他summary的id
 
 **result**:负责summary的结果和数据入库的对应关系
 
-​	for:绑定summary的id
+	for:绑定summary的id
 
-​	to:绑定database的id
+	to:绑定database的id
 
-​	id:如果是入hive,就是hive中的表名,如果是hdfs就是目录名
+	id:如果是入hive,就是hive中的表名,如果是hdfs就是目录名
 
 **prepare**:一些广播表和udf函数
 
@@ -485,71 +485,31 @@ CMCCXDR（INTERFACE=19)==> sv表
 
 List-BIGXDR 	
 
-​	/data/ftpdata/output/data
+	/data/ftpdata/output/data
 
 List-Volte	
 
-​	/data1/hwvolte
+	/data1/hwvolte
 
 List-s1mme
 
-​	/data1/eric_lte/sig
+	/data1/eric_lte/sig
 
 
 
 
 
-# bigxdr
+输出的指标:
 
+小时维度
 
+天维度
 
-​	'srvcc',
+定界定位
 
-​	'srvccmr',
+指标呈现(指标评估)
 
-​	'drop',
-
-​	'dropmr',
-
-​	'cmcc',
-
-​	'cmccmr',
-
-​	'vtv',
-
-​	'drops1mme',
-
-​	'Gm',  hdfs上没有
-
-# volte
-
-## mw_sv
-
-​	'Mw',
-
-​	'Sv',
-
-## volte
-
-​	'ISC',
-
-​	'Mg',
-
-​	'Cx',
-
-​	'Sh', 
-
-​	'Gx',
-
-​	'Rx',
-
-​	'Zh',
-
-​	'Mj'
-
-#  s1mme
-
-​	's1mme'
+渲染
 
 
 
@@ -569,7 +529,7 @@ hdfs    /data/volte/
 
 立即执行
 
-​	针对选择的时间区间,按照小时分割,直接一个小时一个小时的跑
+	针对选择的时间区间,按照小时分割,直接一个小时一个小时的跑
 
 
 
@@ -624,6 +584,10 @@ awk
 
 ls -alrth  /opt/do/Toolbox/work|awk '{if($NF ~ "mw|sv|cmcc|render|vtv|widetable"){print "/opt/do/Toolbox/work/"$9}}'|wc -l
 
+# 常见错误
 
+NullPoint
 
-"/opt/do/Toolbox/work/"
+可能是业务里的datasource没有配置
+
+如果配置了还报,看一下meta-info里依赖(比如mysql)

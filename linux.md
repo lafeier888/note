@@ -20,4 +20,26 @@ N  #上一个
 f_v_bxdr_city_grid_imsi_d_render.sql
 ```
 
+# 源码编译安装
 
+
+
+ yum install install autoconf automake libtool
+
+
+
+
+
+sudo yum install -y cmake gcc gcc-c++ doxygen
+
+
+
+sudo yum install epel-release
+
+sudo yum install python34
+
+
+
+```
+yum install man-pages-zh-CN
+```
