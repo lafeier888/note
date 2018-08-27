@@ -43,3 +43,18 @@ sudo yum install python34
 ```
 yum install man-pages-zh-CN
 ```
+
+# 命令
+
+cd -   回到上次的目录
+
+# 磁盘
+
+
+
+/dev/sd[a-]  实体机
+
+/dev/vd[a-p]  虚拟机
+
+
+
