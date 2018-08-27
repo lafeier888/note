@@ -136,7 +136,7 @@ yum install yum-utils createrepo
 创建http服务器
 
 	开启
-
+	
 	保证网络可以访问
 
 创建镜像web目录
