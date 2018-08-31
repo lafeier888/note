@@ -48,6 +48,12 @@ yum install man-pages-zh-CN
 
 cd -   回到上次的目录
 
+awk
+
+head
+
+xagrs
+
 # 磁盘
 
 

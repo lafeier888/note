@@ -823,3 +823,6 @@ mysql2.arg.password=volte123456
 mysql2.arg.data_dir=/opt/do/Toolbox/data
 mysql2.arg.charset=utf-8
 
+清除hdfs上的voltes1mme目录(xdr数据)
+hdfs dfs -ls -r -t /data/voltes1mme |awk '{print $8}'|head -n -5|xargs hdfs dfs -rmr
+
