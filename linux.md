@@ -54,6 +54,14 @@ head
 
 xagrs
 
+free -m
+
+du -sh *
+
+df -h
+
+top
+
 # 磁盘
 
 
