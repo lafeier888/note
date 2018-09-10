@@ -62,5 +62,3 @@ xagrs
 
 /dev/vd[a-p]  虚拟机
 
-
-

@@ -134,9 +134,9 @@ work目录也有可能需要删除
 etc下是配置文件
 
 	this.properties
-
+	
 	web.properties
-
+	
 	这俩文件的端口保持一致
 
 this.properties中的配置category=Toolbox-YUNNAN，可以通过知道工具箱读取的是哪个配置文件
@@ -284,15 +284,15 @@ private static final String[][] modules = {
 **summary**:具体业务逻辑,依赖的数据来自source或者其他的summary处理后的数据
 
 	id:标识,给result或者其他的summary用
-
+	
 	in:依赖的视图,可以是source或者是其他summary的id
 
 **result**:负责summary的结果和数据入库的对应关系
 
 	for:绑定summary的id
-
+	
 	to:绑定database的id
-
+	
 	id:如果是入hive,就是hive中的表名,如果是hdfs就是目录名
 
 **prepare**:一些广播表和udf函数
@@ -586,8 +586,14 @@ ls -alrth  /opt/do/Toolbox/work|awk '{if($NF ~ "mw|sv|cmcc|render|vtv|widetable"
 
 # 常见错误
 
-NullPoint
+NullPoint(入库相关的)
 
-可能是业务里的datasource没有配置
+	可能是业务里的datasource没有配置
 
-如果配置了还报,看一下meta-info里依赖(比如mysql)
+	如果配置了还报,看一下meta-info里依赖(比如mysql)
+
+	还有可能是基础插件的问题,实在不行,替换之
+
+报jsp的错误:
+
+看看meta-inf里是不是新加依赖没有加逗号
