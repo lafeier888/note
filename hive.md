@@ -1,11 +1,24 @@
-```
-ALTER TABLE test.sv DROP IF EXISTS PARTITION (phour='2018071607');
-```
+udaf(行转列)
+
+collect_set  可以将某列的值转为 一个数组,作为一个数组值
+
+|  id  | value |
+| :--: | :---: |
+|  1   | cxs1  |
+|  2   | cxs2  |
+|  3   | cxs3  |
 
 
 
-# topN
 
 
 
-# 分组topN
+
+udtf(列转行)
+
+可以将某列的值,分为多行
+
+
+
+
+

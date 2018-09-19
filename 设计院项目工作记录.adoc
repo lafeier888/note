@@ -1,0 +1,837 @@
+
+== vpn
+:
+VPN:liushuangzhen   密码：Fyh@10024008
+:
+登录用户名： liulu ,登录密码： 3iO2ly18 ,请登
+
+账号/密码: wangyaozu/Wyz@2019
+
+
+Yy@wgzx90
+Yy@wgzx125
+
+
+mysql:5.7.20
+postgres:9.4.15
+
+
+yum install postgresql94 --downloadonly --downloaddir=/root/pg-msql
+yum install postgresql94-server --downloadonly --downloaddir=/root/pg-msql
+
+
+yum install mysql-community-server --downloadonly --downloaddir=/root/pg-msql
+
+yum reinstall libtirpc --downloadonly --downloaddir=/root/pg-msql
+
+yum deplist libtirpc-devel
+
+systemctl restart postgresql-9.4
+
+systemctl status postgresql-9.4
+
+
+cat > /etc/yum.repos.d/pg-msql.repo <<_EOF_
+[pg-msql]
+name=pg-msql
+baseurl=file:///home/yingyong/pg-msql
+enabled=1
+gpgcheck=0
+_EOF_
+
+
+vi ./.bash_profile
+
+[ -f /etc/profile ] && source /etc/profile
+PGDATA=/var/lib/pgsql/9.4/data
+export PGDATA
+[ -f /var/lib/pgsql/.pgsql_profile ] && source /var/lib/pgsql/.pgsql_profile
+
+export PS1='[\u@\h \W]\$'
+
+
+psql -U postgres
+
+
+mv public.sql /var/lib/pgsql &&\
+psql -U postgres -W -d postgres -f public.sql
+
+
+
+pg_hba.conf和postgresql.conf的存放目录都在(9.5版本)/etc/postgresql/9.5/main
+
+host  all    all    192.168.1.0/24    trust
+
+
+10.198.102.125
+10.198.102.90
+
+spark-submit \
+--class io.dishui.SaveToHdfs \
+--master yarn \
+--executor-memory 4G \
+--total-executor-cores 2 \
+spark-sql.jar
+
+
+sh /usr/hdp/2.6.3.0-235/spark2/bin/spark-submit \
+--class org.apache.spark.examples.SparkPi \
+--master yarn \
+--executor-memory 4G \
+--total-executor-cores 2 \
+/usr/hdp/current/spark2-client/examples/jars/spark-examples_2.11-2.2.0.2.6.3.0-235.jar \
+100
+
+
+192.168.1.176
+192.168.1.1
+guizhou1234
+
+
+== nifi
+
+List-BIGXDR
+  /data/volte/mw  ->   mw
+  /data/volte/sv  ->   sv
+  /data/volte/cmcc  ->   bigxdrcmcc
+  /data/volte/srvcc  ->   bigxdrcmccsrvcc
+  /data/volte/drop  ->   bigxdrcmccdrop
+  /data/volte/cmccmr  ->   bigxdrcmccmr
+  /data/volte/dropmr  ->   bigxdrcmccdropmr
+  /data/volte/srvccmr  ->   bigxdrcmccsrvccmr
+  /data/volte/vtv  ->   bigxdrvtv
+
+
+
+----
+http://10.198.102.94:9980/nifi/
+
+
+/apps/shtest/s1u/dh=${now():toNumber():minus(5529600000):format('yyyyMMdd')}*
+
+8个小时
+/data/volte1/*/phour=${now():toNumber():minus(28800000):format('yyyyMMdd')}*
+
+
+
+${filename:contains('Sv')}
+
+${filename:getDelimitedField(5, '_'):substring(0,10)}
+
+${line:getDelimitedField(5, '|'):in('851','0851')}
+
+${filename:contains('Gm')}
+${filename:contains('ISC')}
+${filename:contains('Mg')}
+${filename:contains('Cx')}
+${filename:contains('Sh')}
+${filename:contains('Gx')}
+${filename:contains('Rx')}
+${filename:contains('Zh')}
+${filename:contains('s1mme')}
+${filename:contains('Mj')}
+
+category gm
+category isc
+category mg
+category cx
+category sh
+category gx
+category rx
+category zh
+category s1mme
+category mj
+
+hour ${filename:getDelimitedField(5, '_'):substring(0,10)}
+
+
+Gm
+ISC
+Mg
+Cx
+Sh
+Gx
+Rx
+Zh
+s1mme
+Mj
+
+'mw','sv','gm','isc','mg','cx','sh','gx','rx','zh','s1mme','mj'
+
+${category:in('mw','sv','drop','srvcc','cmcc','dropmr','srvccmr','cmccmr','vtv','drops1mme','gm','isc','mg','cx','sh','gx','rx','zh','s1mme','mj')}
+
+
+${category:in('drop','srvcc','cmcc','dropmr','srvccmr','cmccmr','vtv','drops1mme')}
+${category:in('s1mme')}
+${category:in('mw','sv','gm','isc','mg','cx','sh','gx','rx','zh','mj')}
+
+<handler name="xdr_mro" wrapper="xdr-file-csv" target="xdr_mro">^\d{2}\.csv$</handler>
+<handler name="xdr_volte_gm" wrapper="xdr-file-csv" target="xdr_volte_gm">^LTE_.*Gm.*\.txt$</handler>
+<handler name="xdr_volte_mw" wrapper="xdr-file-csv" target="xdr_volte_mw">^LTE_.*Mw.*\.txt$</handler>
+<handler name="xdr_volte_isc" wrapper="xdr-file-csv" target="xdr_volte_isc">^LTE_.*ISC.*\.txt$</handler>
+<handler name="xdr_volte_mg" wrapper="xdr-file-csv" target="xdr_volte_mg">^LTE_.*Mg.*\.txt$</handler>
+<handler name="xdr_volte_sv" wrapper="xdr-file-csv" target="xdr_volte_sv">^LTE_.*Sv.*\.txt$</handler>
+<handler name="xdr_volte_cx" wrapper="xdr-file-csv" target="xdr_volte_cx">^LTE_.*Cx.*\.txt$</handler>
+<handler name="xdr_volte_sh" wrapper="xdr-file-csv" target="xdr_volte_sh">^LTE_.*Sh.*\.txt$</handler>
+<handler name="xdr_volte_gx" wrapper="xdr-file-csv" target="xdr_volte_gx">^LTE_.*Gx.*\.txt$</handler>
+<handler name="xdr_volte_rx" wrapper="xdr-file-csv" target="xdr_volte_rx">^LTE_.*Rx.*\.txt$</handler>
+<handler name="xdr_volte_zh" wrapper="xdr-file-csv" target="xdr_volte_zh">^LTE_.*Zh.*\.txt$</handler>
+<handler name="xdr_volte_s1mme" wrapper="xdr-file-csv" target="xdr_volte_s1mme">^.*s1mme.*\.txt$</handler>
+<handler name="xdr_volte_mj" wrapper="xdr-file-csv" target="xdr_volte_mj">^LTE_.*Mj.*\.txt$</handler>
+
+
+
+/data/ftpdata/output/data1
+${sftp.listing.user}
+
+log
+tail -f /opt/do/hdf/nifi/logs/nifi-app.log
+
+
+${category:in('mw','sv','drop','srvcc','cmcc','dropmr','srvccmr','cmccmr','vtv','drops1mme')}
+
+${category:in('sv')}
+
+
+${line:find('\|851\|0?851\|851\|851\||\|851\|0?851\|\|\|')}
+
+/opt/do/hdf/nifi/bin/msck.sh
+
+${hour:ge(2018071810):and(${hour:le(2018071810)})}
+
+正则表达式
+\|851\|0?851\|851\|851\|
+|
+\|851\|0?851\|\|\|
+
+\|851\|0?851\|851\|851\||\|851\|0?851\|\|\|
+
+demo
+213|851|851|851|851|4|19|31643062383031336163373737333030|6|460009418170416|860736031356767|13639104991|1|1531685679501|1531685680070|10.43.192.163|2123|10.43.27.147|2123|0|460|00|460|00|34068|34068|141167882|||10.43.192.163|2818771204|499999522|8613748850||9383||16|0|||569|852
+213|851|0851|851|851|4|19
+
+213|851|0851|||4|19
+
+ListSFTP
+  10.198.102.115
+  /data/ftpdata/output/data
+  Yy@wgzx115
+  .*\.csv
+
+/etc/hadoop/conf/core-site.xml,/etc/hadoop/conf/hdfs-site.xml
+----
+
+== ambari
+
+http://10.198.102.122:8080/#/login[]
+
+== hdfs
+
+10.198.102.122:50070
+10.198.102.123:8088
+
+10.198.102.115
+
+=== nfs
+
+----
+hadoop008 10.198.102.129
+
+sudo systemctl stop rpcbind
+sudo systemctl stop rpcbind.socket
+
+sudo hdfs portmap 2>portmap.err &
+hdfs nfs3 2>~/nfs3.err &
+
+sudo mount -t nfs -o vers=3,proto=tcp,nolock $HOSTNAME:/ /data/mnt/hdfs
+
+sudo mount -t nfs -o vers=3,proto=tcp,nolock 10.198.102.129:/ /data/hdfs
+
+mount -t nfs -o vers=3,proto=tcp,nolock,noacl,sync 10.198.102.129:/ /data/hdfs
+
+mount -t nfs -o rw,async,wsize=32768,rsize=32768  10.198.102.129:/ /data/hdfs
+
+清理 IO 读写 cache
+echo 2 > /proc/sys/vm/drop_caches
+
+----
+
+
+== mysql
+
+
+MSCK REPAIR TABLE table_name;
+
+
+CREATE DATABASE `volte` CHARACTER SET utf8;
+
+
+[mysqld]
+port            = 3308
+user            = mysql
+pid-file        = /var/lib/mysql/mysql.pid
+socket          = /var/lib/mysql/mysql.sock
+datadir         = /var/lib/mysql
+skip-external-locking
+key_buffer_size = 384M
+max_allowed_packet = 1M
+table_open_cache = 512
+sort_buffer_size = 2M
+read_buffer_size = 2M
+read_rnd_buffer_size = 8M
+myisam_sort_buffer_size = 64M
+thread_cache_size = 8
+query_cache_size = 32M
+
+# 忽略大小写
+lower_case_table_names = 1
+innodb_file_per_table = 1
+character_set_server = utf8
+
+ALTER USER USER() IDENTIFIED BY 'volte123456';
+
+SET PASSWORD = PASSWORD('volte123456');
+ALTER USER 'root'@'localhost' PASSWORD EXPIRE NEVER;
+flush privileges;
+
+
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'volte123456' WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON *.* TO 'develop'@'%' IDENTIFIED BY 'volte123456' WITH GRANT OPTION;
+flush privileges;
+
+
+
+mysql -u develop -p
+
+
+select * from f_v_bxdr_vtv_h limit 5;
+
+== Sz/Rz
+
+"U:\dishui\content\post\work\dayliy\nifi-1.xml"
+
+"U:\project\Framework\plugins\com.nsn.datamining.mysql.jar"
+"U:\project\Framework\plugins\com.nsn.messages.client.jar"
+"U:\project\Framework\plugins\com.nsn.datamining.jar"
+
+"U:\project\Framework\plugins\com.nsn.web.do.tbox.jar"
+"U:\project\Framework\plugins\com.nsn.do.tbox.cmcc.spark.volte.jar"
+"U:\project\Framework\plugins\com.nsn.logger.jar"
+"U:\project\Framework\plugins\tmp.tar.gz"
+
+"U:\IdeaProject\scala\g8out\spark-streaming-2.3\sql\target\spark-sql.jar"
+
+"V:\Users\dishui\Desktop\贵州-移动\plugins\com.nsn.base.hdfs-1.0.jar"
+"V:\Users\dishui\Desktop\贵州-移动\plugins\com.nsn.messages.check.jar"
+
+"U:\project\Framework\plugins\com.nsn.datamining.support.xdr.cmcc.cmdi.jar"
+"U:\project\Framework\plugins\com.nsn.do.tbox.cmcc.spark.volte.widetable.jar"
+"U:\project\Framework\plugins\com.nsn.do.tbox.cmcc.spark.volte.widetable.day.jar"
+"U:\project\Framework\plugins\com.nsn.datamining.support.xdr.cmcc.cmdi.jar"
+
+
+./incre-tar.sh updatejar com.nsn.datamining.spark.jar Main
+
+incre-tar.sh updatejar com.nsn.datamining.spark.jar HDFSStreamSource
+
+
+== bash
+
+查看 用户hdfs 运行的进程
+ps -u hdfs
+
+netstat -tln|grep 8899
+
+根据Pid 查看端口
+netstat -tunlp|grep
+
+修改匹配行的下一行
+
+----
+sed -i '/dfs.replication/{n;s@3@1@}' /etc/hadoop/conf/hdfs-site.xml
+----
+
+----
+for i in `seq -w 001 026`; do ssh hadoop$i 'sudo rm -rf /etc/yum.repos.d/ambari-hdp-1.repo'; done
+
+for i in `seq -w 02 09`; do ssh nifi$i 'sudo mkdir -p /etc/hadoop/conf/'; done
+for i in `seq -w 02 09`; do scp /etc/hadoop/conf/core-site.xml /etc/hadoop/conf/hdfs-site.xml nifi$i:/etc/hadoop/conf/; done
+
+for i in `seq -w 01 09`; do ssh hdfs@nifi$i 'source /etc/profile;sh /opt/do/hdf/nifi/bin/nifi.sh stop'; done
+
+for i in `seq -w 04 09`; do ssh nifi$i 'echo "###hdfs###" >> /etc/hosts'; done
+
+for i in `seq -w 02 09`; do ssh nifi$i 'chown -R hdfs:hdfs /etc/hadoop/'; done
+
+for i in `seq -w 01 09`; do ssh nifi$i 'echo "10.198.102.122  hadoop001" >> /etc/hosts'; done
+
+for i in `seq -w 01 09`; do ssh nifi$i 'echo "export HADOOP_USER_NAME=hdfs" >> /root/.bash_profile'; done
+
+for i in `seq -w 01 09`; do ssh nifi$i 'source /root/.bash_profile'; done
+
+hdfs
+
+http://10.198.102.122/HDP/centos7/2.6.3.0-235
+
+http://10.198.102.122/HDP-UTILS
+
+
+com.nsn.datamining.spark.jar Spark1Runtime
+
+com.nsn.datamining.jar XmlDataminingFactory
+----
+
+== ftp
+
+地址
+  sftp://hwvolte:hwvolte%40123@10.195.221.87:22/../../data1/hwvolte/?maxactive=64&download=false
+
+  sftp://hwvolte:hwvolte@123@10.195.221.87
+
+  sftp hwvolte@10.195.221.87
+  10.195.221.87:22/../../data1/hwvolte/?maxactive=64&download=false
+
+----
+java -Xmx8g -Xms2g -jar hdfs-over-ftp-1.0-jar-with-dependencies.jar 2>~/hdfs-ftp.err &
+----
+
+s1mme
+  eric_lte:eric_lte@123
+  /data1/eric_lte/sig
+
+10.198.111.72
+10.198.111.73
+10.198.111.74
+10.198.111.75
+10.198.111.215
+10.198.111.216
+10.198.111.217
+10.198.111.218
+10.198.111.219
+10.198.111.198
+10.198.111.199
+10.198.111.200
+10.198.111.201
+10.198.111.202
+10.198.111.203
+
+decoder.output.1=sftp://eric_lte:eric_lte%40123@10.198.111.72:22/../../data1/eric_lte/sig?maxactive=64&download=false
+decoder.output.2=sftp://eric_lte:eric_lte%40123@10.198.111.73:22/../../data1/eric_lte/sig?maxactive=64&download=false
+decoder.output.3=sftp://eric_lte:eric_lte%40123@10.198.111.74:22/../../data1/eric_lte/sig?maxactive=64&download=false
+decoder.output.4=sftp://eric_lte:eric_lte%40123@10.198.111.75:22/../../data1/eric_lte/sig?maxactive=64&download=false
+decoder.output.5=sftp://eric_lte:eric_lte%40123@10.198.111.215:22/../../data1/eric_lte/sig?maxactive=64&download=false
+decoder.output.6=sftp://eric_lte:eric_lte%40123@10.198.111.216:22/../../data1/eric_lte/sig?maxactive=64&download=false
+decoder.output.7=sftp://eric_lte:eric_lte%40123@10.198.111.217:22/../../data1/eric_lte/sig?maxactive=64&download=false
+decoder.output.8=sftp://eric_lte:eric_lte%40123@10.198.111.218:22/../../data1/eric_lte/sig?maxactive=64&download=false
+decoder.output.9=sftp://eric_lte:eric_lte%40123@10.198.111.219:22/../../data1/eric_lte/sig?maxactive=64&download=false
+decoder.output.0=sftp://eric_lte:eric_lte%40123@10.198.111.198:22/../../data1/eric_lte/sig?maxactive=64&download=false
+decoder.output.1=sftp://eric_lte:eric_lte%40123@10.198.111.199:22/../../data1/eric_lte/sig?maxactive=64&download=false
+decoder.output.2=sftp://eric_lte:eric_lte%40123@10.198.111.200:22/../../data1/eric_lte/sig?maxactive=64&download=false
+decoder.output.3=sftp://eric_lte:eric_lte%40123@10.198.111.201:22/../../data1/eric_lte/sig?maxactive=64&download=false
+decoder.output.4=sftp://eric_lte:eric_lte%40123@10.198.111.202:22/../../data1/eric_lte/sig?maxactive=64&download=false
+decoder.output.5=sftp://eric_lte:eric_lte%40123@10.198.111.203:22/../../data1/eric_lte/sig?maxactive=64&download=false
+
+
+7.7 G    /data/volte/cx
+12.7 G   /data/volte/gm
+115.6 G  /data/volte/gx
+14.2 G   /data/volte/isc
+1.5 G    /data/volte/mg
+1.8 G    /data/volte/mj
+51.1 G   /data/volte/mw
+16.1 G   /data/volte/rx
+22.4 G   /data/volte/sh
+12.2 M   /data/volte/zh
+
+sftp hwvolte@10.195.221.87
+10.195.221.87:22
+
+
+# !/bin/bash
+
+nameStr=`sftp hwvolte@10.195.221.87 <<EOF
+-ls
+bye
+EOF`
+echo $nameStr > remoteString.txt
+
+
+== hive
+
+----
+bigxdrcmcc
+bigxdrcmccdrop
+bigxdrcmccdropmr
+bigxdrcmccmr
+bigxdrcmccsrvcc
+bigxdrcmccsrvccmr
+bigxdrdrops1mme
+bigxdrvtv
+mw
+sv
+
+* */1 * * * source /etc/profile;/opt/do/apache-ant-1.10.2/bin/ant -f /data/binFileClear/clearouttimebin.xml >/dev/null 2>&1
+
+0 */20 * * * ? source /etc/profile;hive -f /home/hdfs/zk-tmp/msck.sql >/dev/null 2>&1
+----
+
+
+[source,]
+----
+#!/bin/bash
+TABLE_ARRAY=("bigxdrcmcc" "bigxdrcmccdrop" "bigxdrcmccdropmr" "bigxdrcmccmr" "bigxdrcmccsrvcc" "bigxdrcmccsrvccmr" "bigxdrdrops1mme" "bigxdrvtv" "mw" "sv")
+DATABASE="default"
+EXPORTFILE="export-ddl.sql"
+
+echo "use $DATABASE;" > $EXPORTFILE
+for TABLE in ${TABLE_ARRAY[*]}
+do
+  #echo "show create table $TABLE;" >> $EXPORTFILE
+  echo "MSCK REPAIR TABLE  $TABLE;" >> $EXPORTFILE
+done
+
+hive -f $EXPORTFILE > r.sql
+----
+
+[source,]
+----
+TABLE_ARRAY=("bigxdrcmcc" "bigxdrcmccdrop" "bigxdrcmccdropmr" "bigxdrcmccmr" "bigxdrcmccsrvcc" "bigxdrcmccsrvccmr" "bigxdrdrops1mme" "bigxdrvtv" "mw" "sv")
+DATABASE="default"
+EXPORTFILE="msck.sql"
+
+for TABLE in ${TABLE_ARRAY[*]}
+do
+  echo "MSCK REPAIR TABLE  $TABLE;" >> $EXPORTFILE
+done
+
+----
+
+[source,]
+----
+TABLE_ARRAY=("bigxdrcmcc" "bigxdrcmccdrop" "bigxdrcmccdropmr" "bigxdrcmccmr" "bigxdrcmccsrvcc" "bigxdrcmccsrvccmr" "bigxdrdrops1mme" "bigxdrvtv" "mw" "sv")
+DATABASE="default"
+EXPORTFILE="show_partition.sql"
+EXPORTFILER="show_partition_r.sql"
+
+echo "use $DATABASE;" > $EXPORTFILE
+for TABLE in ${TABLE_ARRAY[*]}
+do
+  echo "show partitions $TABLE;" >> $EXPORTFILE
+done
+
+hive -f $EXPORTFILE > $EXPORTFILER
+
+----
+
+
+[source,]
+----
+#!/bin/bash
+
+echo 1 >> /tmp/test.tmp
+
+----
+
+
+show create table
+
+
+== ansible
+
+yum -y install epel-release
+
+
+[HDP-2.6.3.0]
+name=HDP Version - HDP-2.6.3.0
+baseurl=http://10.198.102.122/HDP/centos7/2.6.3.0-235
+gpgcheck=1
+gpgkey=http://10.198.102.122/HDP/centos7/2.6.3.0-235/RPM-GPG-KEY/RPM-GPG-KEY-Jenkins
+enabled=1
+priority=1
+
+
+[HDP-UTILS-1.1.0.21]
+name=HDP-UTILS Version - HDP-UTILS-1.1.0.21
+baseurl=http://10.198.102.122/HDP-UTILS
+gpgcheck=1
+gpgkey=http://10.198.102.122/HDP-UTILS/RPM-GPG-KEY/RPM-GPG-KEY-Jenkins
+enabled=1
+priority=1
+
+
+"U:\dishui\content\src\linux\conf\ansible\guizhou.zip"
+
+[nifi-hdfs]
+nifi01 ansible_ssh_host=10.198.102.91 ansible_ssh_user=hdfs ansible_ssh_pass=hdfs
+nifi02 ansible_ssh_host=10.198.102.92 ansible_ssh_user=hdfs ansible_ssh_pass=hdfs
+nifi03 ansible_ssh_host=10.198.102.93 ansible_ssh_user=hdfs ansible_ssh_pass=hdfs
+nifi04 ansible_ssh_host=10.198.102.94 ansible_ssh_user=hdfs ansible_ssh_pass=hdfs
+nifi05 ansible_ssh_host=10.198.102.95 ansible_ssh_user=hdfs ansible_ssh_pass=hdfs
+nifi06 ansible_ssh_host=10.198.102.96 ansible_ssh_user=hdfs ansible_ssh_pass=hdfs
+nifi07 ansible_ssh_host=10.198.102.97 ansible_ssh_user=hdfs ansible_ssh_pass=hdfs
+nifi08 ansible_ssh_host=10.198.102.98 ansible_ssh_user=hdfs ansible_ssh_pass=hdfs
+nifi09 ansible_ssh_host=10.198.102.99 ansible_ssh_user=hdfs ansible_ssh_pass=hdfs
+
+
+COLUMN_NAME 列名,
+COLUMN_TYPE 数据类型,
+DATA_TYPE 字段类型,
+CHARACTER_MAXIMUM_LENGTH 长度,
+IS_NULLABLE 是否为空,
+COLUMN_DEFAULT 默认值,
+COLUMN_COMMENT 备注
+
+
+列名,
+数据类型,
+字段类型,
+长度,
+是否为空,
+默认值,
+备注
+
+
+sed -i s@nifi01@`hostname`@ /opt/do/hdf/nifi/conf/nifi.properties
+
+
+
+
+
+MW  任务 晚1个半小时
+
+--master yarn --deploy-mode client --driver-memory 12G --driver-cores 5 --executor-memory 8G --executor-cores 5 --num-executors 50 --conf spark.sql.shuffle.partitions=50 --conf spark.yarn.executor.memoryOverhead=4G
+
+SV 任务
+--master yarn --deploy-mode client --driver-memory 12G --driver-cores 5 --executor-memory 8G --executor-cores 5 --num-executors 20 --conf spark.sql.shuffle.partitions=20 --conf spark.yarn.executor.memoryOverhead=4G
+
+
+
+ftp://hdfs:310dcbbf4cce62f762a2aaa148d556bd@localhost:2222
+
+
+
+LTE_851_SXYD00001_Cx_20180802091300_0005.txt
+
+minute
+${filename:getDelimitedField(5, '_'):substring(0,12)}
+
+
+LTE_${category}_${minute}_${random():mod(1000):plus(1)}.txt
+
+
+
+
+${category:in('Mw','Sv','drop','srvcc','cmcc','dropmr','srvccmr','cmccmr','vtv','drops1mme','Gm','ISC','Mg','Cx','Sh','Gx','Rx','Zh','s1mme','Mj')}
+
+'Mw','Sv','drop','srvcc','cmcc','dropmr','srvccmr','cmccmr','vtv','drops1mme','Gm','Isc','Mg','Cx','Sh','Gx','Rx','Zh','s1mme','Mj'
+
+
+'Gm','ISC','Mg','Cx','Sh','Gx','Rx','Zh','Mj'
+
+
+"V:\Users\dishui\.m2\repository.zip.007"
+"V:\Users\dishui\.m2\repository.zip.008"
+"V:\Users\dishui\.m2\repository.zip.009"
+"V:\Users\dishui\.m2\repository.zip.010"
+"V:\Users\dishui\.m2\repository.zip.011"
+"V:\Users\dishui\.m2\repository.zip.012"
+"V:\Users\dishui\.m2\repository.zip.013"
+"V:\Users\dishui\.m2\repository.zip.014"
+"V:\Users\dishui\.m2\repository.zip.015"
+"V:\Users\dishui\.m2\repository.zip.016"
+"V:\Users\dishui\.m2\repository.zip.017"
+
+:toLower()
+
+"V:\Users\dishui\maven.tar.gz"
+
+
+.m2/repository2/org/codehaus/plexus/plexus-archiver/1.0-alpha-9
+
+
+== 地址
+
+----
+ftp(mw,sv)
+  地址: 10.195.221.87
+  用户名/密码: hwvolte/hwvolte@123
+
+hive访问需要切换到hdfs用户
+
+hdfs用户名/密码: hdfs/hdfs
+
+hdfs
+  地址: 10.198.102.122:50070
+yarn
+  地址: 10.198.102.123:8088
+
+ambari
+  地址: http://10.198.102.122:8080/#/login
+  用户名/密码: admin/admin
+
+nifi
+  地址: http://10.198.102.94:9980/nifi/
+
+工具箱在(http://10.198.102.90:8890)上
+
+连接(10.198.102.94:3388)windows主机远程桌面，可以访问工具箱页面
+
+com.nsn.web.do.tbox.cmcc.spark.volte.test
+----
+
+
+== 专题配置
+
+show partitions bigxdrcmcc;
+show partitions bigxdrcmccdrop;
+show partitions bigxdrcmccdropmr;
+show partitions bigxdrcmccmr;
+show partitions bigxdrcmccsrvcc;
+show partitions bigxdrcmccsrvccmr;
+show partitions bigxdrvtv;
+
+== 小时任务
+=== mw  推2小时
+[source]
+---
+--master yarn --deploy-mode client --driver-memory 4G --driver-cores 5 --executor-memory 8G --executor-cores 5 --num-executors 50 --conf spark.sql.shuffle.partitions=50 --conf spark.yarn.executor.memoryOverhead=4G
+---
+
+=== sv  推2小时
+[source]
+---
+--master yarn --deploy-mode client --driver-memory 4G --driver-cores 5 --executor-memory 8G --executor-cores 5 --num-executors 20 --conf spark.sql.shuffle.partitions=20 --conf spark.yarn.executor.memoryOverhead=4G
+---
+
+=== bigxdrcmcc  推2小时
+[source]
+---
+--master yarn --deploy-mode client --driver-memory 4G --driver-cores 5 --executor-memory 8G --executor-cores 5 --num-executors 50 --conf spark.sql.shuffle.partitions=50 --conf spark.yarn.executor.memoryOverhead=4G
+---
+
+=== cmccdrop  推2小时10分钟
+[source]
+---
+--master yarn --deploy-mode client --driver-memory 4G --driver-cores 5 --executor-memory 8G --executor-cores 5 --num-executors 20 --conf spark.sql.shuffle.partitions=50 --conf spark.yarn.executor.memoryOverhead=4G
+---
+
+=== cmccsrvcc	 推2小时20分钟
+[source]
+---
+--master yarn --deploy-mode client --driver-memory 4G --driver-cores 5 --executor-memory 8G --executor-cores 5 --num-executors 20 --conf spark.sql.shuffle.partitions=50 --conf spark.yarn.executor.memoryOverhead=4G
+---
+
+=== bigxdrcmcc_render	推2小时30分钟
+[source]
+---
+--master yarn --deploy-mode client --driver-memory 4G --driver-cores 5 --executor-memory 8G --executor-cores 5 --num-executors 20 --conf spark.sql.shuffle.partitions=50 --conf spark.yarn.executor.memoryOverhead=4G
+---
+
+=== cmccdrop_render	推2小时40分钟
+[source]
+---
+--master yarn --deploy-mode client --driver-memory 4G --driver-cores 5 --executor-memory 8G --executor-cores 5 --num-executors 20 --conf spark.sql.shuffle.partitions=50 --conf spark.yarn.executor.memoryOverhead=4G
+---
+
+=== cmccsrvcc_render	 推2小时50分钟
+[source]
+---
+--master yarn --deploy-mode client --driver-memory 4G --driver-cores 5 --executor-memory 8G --executor-cores 5 --num-executors 20 --conf spark.sql.shuffle.partitions=50 --conf spark.yarn.executor.memoryOverhead=4G
+---
+
+=== vtv		推3小时
+
+
+[source]
+---
+--master yarn --deploy-mode client --driver-memory 4G --driver-cores 5 --executor-memory 8G --executor-cores 5 --num-executors 20 --conf spark.sql.shuffle.partitions=50 --conf spark.yarn.executor.memoryOverhead=4G
+---
+
+
+清理work目录
+=== 删除 work 临时文件
+
+----
+ls -alrth|awk '{if($NF ~ "mw|sv|cmcc|render|vtv"){print $9}}'|head -50|xargs rm -rf
+----
+
+
+== 贵州环境配置文件
+
+[source,]
+----
+datasources=spark1,mysql2,hdfs,hive
+
+hdfs.source-type=HDFS-NORMAL
+hdfs.type=HDFS
+hdfs.title=HDFS for CMDI
+hdfs.arg.location=hdfs://hadoop001:8020/output/hdfs
+
+hive.source-type=HIVE-NORMAL
+hive.type=HIVE
+hive.title=Hive for CMDI
+hive.arg.database=result
+hive.arg.location=/output/result
+
+spark1.source-type=XDR-CMCC-SPARK
+spark1.type=XDR-CMCC-SPARK
+spark1.title=CMDI Hadoop ENV
+spark1.arg.home=/opt/do/spark-2.2.0
+spark1.arg.configuration=/opt/do/spark-2.2.0/conf1
+spark1.arg.name=Toolbox-nokia
+spark1.arg.hivedb=result
+spark1.arg.hdfs=hdfs://hadoop001:8020/output/hdfs
+spark1.arg.staging=hdfs://hadoop001:8020/user/hdfs/.sparkStaging/
+spark1.arg.hiveSetting=mapred.input.dir.recursive=true
+
+
+mysql2.source-type=MYSQL-NORMAL
+mysql2.type=MYSQL-NORMAL
+mysql2.title=CMDI MySQL
+mysql2.arg.host=10.198.102.90
+mysql2.arg.port=3306
+mysql2.arg.database=volte
+mysql2.arg.username=develop
+mysql2.arg.password=volte123456
+mysql2.arg.data_dir=/opt/do/Toolbox/data
+mysql2.arg.charset=utf-8
+
+
+runtime.spark.submit=/usr/bin/spark-submit
+datamining.callback=http://10.198.102.90:8890/tbox/callback
+----
+
+2018年8月14日 10:16:35  
+修改com.nsn.do.tbox.cmcc.spark.volte.widetable.day 
+volte_widetable_day.xml
+summary id=DISTINCT_DIMENSION_FOR_PROV_CITY
+添加and scity is not null条件可以出渲染的数据了
+
+过滤异常信息
+awk '{if($0~"Exception") print}' console.log
+
+
+
+mysql2.source-type=MYSQL-NORMAL
+mysql2.type=MYSQL-NORMAL
+mysql2.title=CMDI MySQL
+mysql2.arg.host=10.198.102.90
+mysql2.arg.port=3306
+mysql2.arg.database=volte
+mysql2.arg.username=develop
+mysql2.arg.password=volte123456
+mysql2.arg.data_dir=/opt/do/Toolbox/data
+mysql2.arg.charset=utf-8
+
+# 清除hdfs上的voltes1mme目录(xdr数据)
+hdfs dfs -ls -r -t /data/voltes1mme |awk '{print $8}'|head -n -5|xargs hdfs dfs -rmr
+
+# 删除log日志（因为空间不够）
+size=`du -sm /opt/do/Toolbox/log/debug`
+
+sizem=`echo $size|awk '{print $1}'`
+size=${sizem%M}
+[ "$size" -gt "150" ]
+if [ $? -eq '0' ]; then
+rm -f /opt/do/Toolbox/log/debug/debug.log.*
+fi
