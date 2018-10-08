@@ -163,3 +163,40 @@ object SimpleApp {
   }
 }
 ```
+
+
+
+# SparkSession
+
+程序入口
+
+```
+SparkSession.builder
+  .master("local")
+  .appName("Word Count")
+  .config("spark.some.config.option", "some-value")
+  .getOrCreate()
+```
+
+
+
+
+
+
+
+
+
+SparkSession
+
+DataFrame
+
+DataSet
+
+Row
+
+JavaRDD
+
+RDD
+
+Product
+

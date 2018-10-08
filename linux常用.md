@@ -70,3 +70,10 @@ top
 
 /dev/vd[a-p]  虚拟机
 
+# 用户以及权限
+
+groupadd 组名
+
+useradd 用户名 -g 组名 -p 密码
+
+chown -R 用户名：组名 文件夹

@@ -25,3 +25,41 @@ Python
   ​	a = {name:"lafeier",age:18} 
 
   ​	 fn(**a) = fn(name="lafeier",age=18)
+
+# 函数式
+
+lambda表达式实现函数定义
+
+map
+
+filter 
+
+readuce
+
+```
+list = [1,2,3,4]
+mapiter= map(lambda x:x+1,list)
+for x in mapiter:
+    print(x)
+```
+
+# 操作shell
+
+commands模块只能用于linux
+
+os.popen(command)  可用于windows
+
+# http
+
+requests模块
+
+get(url,data,header)
+
+​	data是参数 字典
+
+​	header是协议头 字典
+
+
+​	allow_redirects=False 禁止重定向
+
+
