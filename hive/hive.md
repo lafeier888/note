@@ -1,3 +1,7 @@
+
+
+![hive-hadoop兼容性](D:\note\assets\hive-hadoop兼容性.png)
+
 udaf(行转列)
 
 collect_set  可以将某列的值转为 一个数组,作为一个数组值
@@ -10,7 +14,7 @@ collect_set  可以将某列的值转为 一个数组,作为一个数组值
 
 
 
-
+set hive.exec.mode.local.auto=true;
 
 
 
