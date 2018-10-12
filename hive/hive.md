@@ -1,26 +1,54 @@
-
+# hive和hadoop的兼容性
 
 ![hive-hadoop兼容性](D:\note\assets\hive-hadoop兼容性.png)
 
-udaf(行转列)
-
-collect_set  可以将某列的值转为 一个数组,作为一个数组值
-
-|  id  | value |
-| :--: | :---: |
-|  1   | cxs1  |
-|  2   | cxs2  |
-|  3   | cxs3  |
 
 
+# hive使用本地模式
 
 set hive.exec.mode.local.auto=true;
 
 
 
-udtf(列转行)
+# UDF
 
-可以将某列的值,分为多行
+## 内置函数
+
+数学函数
+
+round/bround 舍入
+
+floor/ceil	上下限
+
+rand	随机
+
+ln/log2/log10/log	对数
+
+pow/power	幂
+
+sqrt	开方
+
+bin/hex/unhex/conv 进制转换
+
+abs	绝对值
+
+sin/asin/cos/acos/tan/atan 三角函数
+
+degrees/radians 角度/弧度
+
+
+
+
+
+
+
+
+
+## 内置udaf函数（聚合函数）
+
+## 内置UDTF（表生成函数）
+
+
 
 
 
