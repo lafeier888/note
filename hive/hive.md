@@ -52,5 +52,47 @@ degrees/radians 角度/弧度
 
 
 
+# Hive CLI
 
+
+
+hive -e "sql"
+
+hive -f xxx.sql
+
+
+
+## Hive CLI 交互式模式(不加参数进入)
+
+quit/exit   
+
+
+
+set 输出所有可用的属性
+
+set -v
+
+set <key>=<value>
+
+reset 重置所有属性为默认值
+
+
+
+!<command>  执行终端命令
+
+dfs <cmmand> 指定dfs命令
+
+source FILE <filepath> 执行脚本
+
+
+
+add file|archive|jar <path>
+
+add files|archives|jars <paths*>
+
+
+
+list file|archive|jar 
+
+list files|archives|jars
 
