@@ -1,4 +1,5 @@
 # 独立\本地模式(单线程)
+
 这种模式是以单线程模式启动,不用启动hdfs,yarn,直接运行就可以
 ```
 $ mkdir input
@@ -46,3 +47,7 @@ java.lang.IllegalArgumentException: Invalid URI for NameNode address (check fs.d
 # 重复格式化
 
 删除hadoop.tmp.dir=/tmp/hadoop-${user.name}下的文件夹
+
+# 关闭安全模式
+
+hdfs dfsadmin -safemode leave

@@ -15,6 +15,11 @@ Yy@wgzx125
 mysql:5.7.20
 postgres:9.4.15
 
+90节点密码   do@toolbox
+
+
+
+
 
 yum install postgresql94 --downloadonly --downloaddir=/root/pg-msql
 yum install postgresql94-server --downloadonly --downloaddir=/root/pg-msql
