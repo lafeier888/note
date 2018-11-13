@@ -18,7 +18,7 @@ Logger.getLogger("org").setLevel(Level.WARN)
 
    spark.sql.dialect 配置spark使用的sql方言
 
-
+# Column
 
 
 
@@ -151,6 +151,8 @@ intersect  交集
 filter
 
 flatMap
+
+joinWith   join操作
 
 
 

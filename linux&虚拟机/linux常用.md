@@ -77,3 +77,25 @@ groupadd 组名
 useradd 用户名 -g 组名 -p 密码
 
 chown -R 用户名：组名 文件夹
+
+groups  查看组内其他成员
+
+groups username  查看用户所在的组以及组内成员
+
+
+
+su username  切换用户
+
+
+
+
+
+_  xxx xxx xxx  
+
+_  文件或目录
+
+第一个xxx   用户权限
+
+第二个xxx   组权限
+
+第三个xxx   其他人权限
