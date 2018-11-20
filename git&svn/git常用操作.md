@@ -94,4 +94,3 @@ HEAD表示当前版本
 git reflog
  git reset --hard HEAD^ 回退到上个版本
  git reset --hard 1094a 回退到某个版本
-
