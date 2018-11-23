@@ -94,3 +94,56 @@ HEAD表示当前版本
 git reflog
  git reset --hard HEAD^ 回退到上个版本
  git reset --hard 1094a 回退到某个版本
+
+
+
+
+
+
+
+初始化一个本地仓库
+
+git init  
+
+暂存修改
+
+git add *
+
+git add *.java
+
+git add abc.txt
+
+提交到本地仓库
+
+git commit -m 'commit this update'
+
+
+
+
+
+
+
+
+
+git remote add xxx_name  xxx_url
+
+git checkout -b xxx_name origin/master
+
+修改...commit
+
+git push own master:master  推送到自己的远端
+
+git pull origin master  跟远端合并同步(防止origin修改了太多)
+
+git push origin master:master  再推送到自己的远端
+
+
+
+发个pull request
+
+
+
+origin方:
+
+
+
