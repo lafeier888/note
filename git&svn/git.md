@@ -145,5 +145,9 @@ git push origin master:master  再推送到自己的远端
 
 origin方:
 
+# Git工作流
+
+![1543123284150](../assets/1543123284150.png)
+
 
 
