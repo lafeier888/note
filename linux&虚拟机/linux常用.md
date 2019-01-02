@@ -99,3 +99,15 @@ _  文件或目录
 第二个xxx   组权限
 
 第三个xxx   其他人权限
+
+
+
+# 交互式shell  VS  非交互式shell
+
+交互式shell:  打开一个shell后,输入各种命令,返回结果,这就是交互式shell
+
+非交互式shell:执行脚本,脚本的运行环境就是非交互式shell
+
+# 登录shell和非登录shell
+
+ 图形界面下  直接创建一个shell  这就是非登录shell

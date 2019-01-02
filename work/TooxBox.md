@@ -1,4 +1,27 @@
-# 修复分区表
+
+
+# vpn
+
+chenxs       chenxs*#123
+
+# 测试环境账号
+
+route add -p 192.168.0.0 mask 255.255.0.0 192.168.30.1
+
+
+192.168.6.1
+
+chenxusheng    password
+
+
+
+# svn
+
+chenxusheng = iuxjk290
+
+https://140.206.187.254:7096/svn 
+
+# #修复分区表
 
 MSCK REPAIR TABLE table_name;
 
@@ -23,7 +46,7 @@ MSCK REPAIR TABLE table_name;
 ## 导入项目(maven)
 
 ```
-assembly/
+assembly/    编译目录
 com.nsn.alarm/
 com.nsn.cluster/
 com.nsn.configurator/
@@ -65,7 +88,7 @@ Framework/  --工具箱
 
 斜体的项目是自己写的插件
 
-## maven配置profile
+## maven配置profile(编译插件用到)
 
 ``` xml
 <profile>
@@ -126,6 +149,14 @@ assembly\install\Toobox\pom.xml
 win下可能需要删除flex-cache目录
 
 work目录也有可能需要删除
+
+
+
+# postgresql  创建表结构
+
+com.nsn.web.do.tbox
+
+com.nsn.web.do.login
 
 # Framework模块
 
@@ -589,9 +620,9 @@ ls -alrth  /opt/do/Toolbox/work|awk '{if($NF ~ "mw|sv|cmcc|render|vtv|widetable"
 NullPoint(入库相关的)
 
 	可能是业务里的datasource没有配置
-
+	
 	如果配置了还报,看一下meta-info里依赖(比如mysql)
-
+	
 	还有可能是基础插件的问题,实在不行,替换之
 
 报jsp的错误:
